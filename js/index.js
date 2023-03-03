@@ -1,12 +1,13 @@
 const loadAiData = () =>{
     fetch('https://openapi.programming-hero.com/api/ai/tools')
       .then(response => response.json())
-      .then(data => showData(data.data.tools))
+      .then(data => showData(data.data.tools.slice(0, 6)))
 }
 
 const showData = Elements =>{
         const cardContainer = document.getElementById('card-container');
-        Elements = Elements.slice(0, 6);
+        
+        
     Elements.forEach(element => {
         console.log(element);
         const cardDiv = document.createElement('card')
@@ -20,6 +21,11 @@ const showData = Elements =>{
           <p>2.${element.features[1]}</p>
           <p>3.${element.features[2]}</p>
           <h3 class="card-title">${element.name}</h3>
+          <div class="d-flex justify-content-between">
+              <p class="d-none">${element.published_in}</p>
+              <button class="bg-danger-secondary border border-0 rounded-pill"><i class="fa-solid fa-arrow-right"></i></button>
+
+          </div>
           
         </div>
         </div>
@@ -30,4 +36,12 @@ const showData = Elements =>{
     
 
 
+};
+
+const seeMore = () =>{
+  fetch('https://openapi.programming-hero.com/api/ai/tools')
+    .then(response => response.json())
+    .then(data => showData(data.data.tools))
 }
+
+
