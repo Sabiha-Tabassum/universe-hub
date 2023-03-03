@@ -2,11 +2,21 @@ const loadAiData = () =>{
     fetch('https://openapi.programming-hero.com/api/ai/tools')
       .then(response => response.json())
       .then(data => showData(data.data.tools.slice(0, 6)))
+      toggleSpinner(true);
 }
 
 const showData = Elements =>{
+       
         const cardContainer = document.getElementById('card-container');
-        
+        cardContainer.innerHTML = '';
+        const seeMore = document.getElementById('footer-btn')
+        if(Elements.length > 6){
+          seeMore.classList.add('d-none')
+
+        }
+        else{
+          seeMore.classList.remove('d-none')
+        }
         
     Elements.forEach(element => {
         console.log(element);
@@ -33,15 +43,37 @@ const showData = Elements =>{
         cardContainer.appendChild(cardDiv);
         
     });
+    toggleSpinner(false);
+
     
-
-
 };
+
+
+
+
+// see more button :
 
 const seeMore = () =>{
   fetch('https://openapi.programming-hero.com/api/ai/tools')
     .then(response => response.json())
     .then(data => showData(data.data.tools))
-}
+};
+
+// toggle spinner :
+
+
+
+ const toggleSpinner = isLoading =>{
+    const loaderSection = document.getElementById('spinner');
+    if(isLoading === true){
+      loaderSection.classList.remove('d-none')
+
+    }
+    else{
+      loaderSection.classList.add('d-none')
+    }
+
+
+ };
 
 
