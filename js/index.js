@@ -19,7 +19,7 @@ const showData = Elements =>{
         }
         
     Elements.forEach(element => {
-          // console.log(element);
+          console.log(element);
         const cardDiv = document.createElement('card')
         cardDiv.classList.add('col')
         cardDiv.innerHTML = `
@@ -98,9 +98,26 @@ const loadId = id =>{
   const url = ` https://openapi.programming-hero.com/api/ai/tool/${id} `
      fetch(url)
     .then(response => response.json())
-    .then(data => console.log(data.data.id))
+    .then(data => displayData(data.data))
   
 }
+
+const displayData = article =>{
+  console.log(article)
+  
+  
+       document.getElementById('first-modal').innerText = article.description
+       document.getElementById('second-modal').innerText = article.image_link
+       document.getElementById('first-div').innerText = article.pricing[0].price
+       document.getElementById('second-div').innerText = article.pricing[1].price
+       document.getElementById('third-div').innerText = article.pricing[2].price
+       
+        
+      
+}
+
+
+
 
 
   
