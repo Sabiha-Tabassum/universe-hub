@@ -19,7 +19,7 @@ const showData = Elements =>{
         }
         
     Elements.forEach(element => {
-        console.log(element);
+          // console.log(element);
         const cardDiv = document.createElement('card')
         cardDiv.classList.add('col')
         cardDiv.innerHTML = `
@@ -33,8 +33,8 @@ const showData = Elements =>{
           <h3 class="card-title">${element.name}</h3>
           <div class="d-flex justify-content-between">
               <div ><p id="date" class="">${element.published_in}</p></div>
-              
-              <button type="button" class="bg-danger-secondary border border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+              <button onclick="loadId('${element.id}')" type="button" class="bg-danger-secondary border border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="fa-solid fa-arrow-right"></i>
             </button>
              
@@ -89,6 +89,21 @@ const seeMore = () =>{
   
   
 // })
+
+
+// modal:
+
+const loadId = id =>{
+  
+  const url = ` https://openapi.programming-hero.com/api/ai/tool/${id} `
+     fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data.data.id))
+  
+}
+
+
+  
 
 
 
