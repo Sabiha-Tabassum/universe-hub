@@ -111,6 +111,10 @@ const displayData = article =>{
        document.getElementById('first-div').innerText = article.pricing[0].price
        document.getElementById('second-div').innerText = article.pricing[1].price
        document.getElementById('third-div').innerText = article.pricing[2].price
+
+       document.getElementById('basic').innerText = article.pricing[0].plan
+       document.getElementById('pro').innerText = article.pricing[1].plan
+       document.getElementById('enterprise').innerText = article.pricing[2].plan
        
         
       
