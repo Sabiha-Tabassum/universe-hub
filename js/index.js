@@ -32,8 +32,12 @@ const showData = Elements =>{
           <p>3.${element.features[2]}</p>
           <h3 class="card-title">${element.name}</h3>
           <div class="d-flex justify-content-between">
-              <p class="d-none">${element.published_in}</p>
-              <button class="bg-danger-secondary border border-0 rounded-pill"><i class="fa-solid fa-arrow-right"></i></button>
+              <div ><p id="date" class="">${element.published_in}</p></div>
+              
+              <button type="button" class="bg-danger-secondary border border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+             
 
           </div>
           
@@ -75,5 +79,20 @@ const seeMore = () =>{
 
 
  };
+
+
+// date button :
+
+// document.getElementById('dateButton').addEventListener('click', function(){
+//   const date = document.getElementById('date');
+//   date.classList.remove('d-none');
+  
+  
+// })
+
+
+
+
+
 
 
