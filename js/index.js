@@ -1,8 +1,12 @@
-const loadAiData = () =>{
-    fetch('https://openapi.programming-hero.com/api/ai/tools')
-      .then(response => response.json())
-      .then(data => showData(data.data.tools.slice(0, 6)))
-      toggleSpinner(true);
+const loadAiData = async () =>{
+  toggleSpinner(true);
+   const url = `https://openapi.programming-hero.com/api/ai/tools`
+   const res = await fetch(url);
+   const data = await res.json();
+   showData(data.data.tools.slice(0, 6));
+    
+      
+    
 }
 
 const showData = Elements =>{
@@ -93,12 +97,14 @@ const seeMore = () =>{
 
 // modal:
 
-const loadId = id =>{
+const loadId = async (id) =>{
   
   const url = ` https://openapi.programming-hero.com/api/ai/tool/${id} `
-     fetch(url)
-    .then(response => response.json())
-    .then(data => displayData(data.data))
+   const res = await fetch(url);
+   const data = await res.json();
+   displayData(data.data);
+
+    
   
 }
 
@@ -115,13 +121,13 @@ const displayData = article =>{
        document.getElementById('first-modal').innerText = article.description
        document.getElementById('second-modal').innerHTML = `<img class="img-fluid" src="${article.image_link[0]}">`
        
-       document.getElementById('first-div').innerText = article.pricing[0].price
-       document.getElementById('second-div').innerText = article.pricing[1].price
-       document.getElementById('third-div').innerText = article.pricing[2].price
+       document.getElementById('first-div').innerText = article.pricing ? article.pricing[0].price : 'Free of cost'
+       document.getElementById('second-div').innerText = article.pricing ? article.pricing[1].price : 'Free of cost'
+       document.getElementById('third-div').innerText = article.pricing ? article.pricing[2].price : 'Free of cost'
 
-       document.getElementById('basic').innerText = article.pricing[0].plan
-       document.getElementById('pro').innerText = article.pricing[1].plan
-       document.getElementById('enterprise').innerText = article.pricing[2].plan
+       document.getElementById('basic').innerText = article.pricing ? article.pricing[0].plan : 'basic'
+       document.getElementById('pro').innerText = article.pricing ? article.pricing[1].plan : 'pro'
+       document.getElementById('enterprise').innerText = article.pricing ? article.pricing[2].plan : 'enterprise'
 
        
 
@@ -129,15 +135,15 @@ const displayData = article =>{
        document.getElementById('second-li').innerText = article.features[2].feature_name
        document.getElementById('third-li').innerText = article.features[3].feature_name
 
-       document.getElementById('first-int').innerText =article.integrations[0]
-       document.getElementById('second-int').innerText =article.integrations[1]
-       document.getElementById('third-int').innerText =article.integrations[2]
+       document.getElementById('first-int').innerText = article.integrations ? article.integrations[0] : 'No data found'
+       document.getElementById('second-int').innerText = article.integrations ? article.integrations[1] : 'No data found'
+       document.getElementById('third-int').innerText = article.integrations ? article.integrations[2] : 'No data found'
        
 
        document.getElementById('accuracy').innerText = article.accuracy.score
-       document.getElementById('input').innerText = article.input_output_examples[0].input
+       document.getElementById('input').innerText = article.input_output_examples ? article.input_output_examples[0].input : 'No! Not Yet! Take a break!!!'
 
-       document.getElementById('output').innerText = article.input_output_examples[0].output
+       document.getElementById('output').innerText = article.input_output_examples ?  article.input_output_examples[0].output : 'No! Not Yet! Take a break!!!'
         
       
 }
