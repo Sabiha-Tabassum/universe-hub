@@ -103,11 +103,17 @@ const loadId = id =>{
 }
 
 const displayData = article =>{
-  console.log(article)
+      console.log(article)
+       const feat = Object.entries(features)
+          console.log(feat)
+
+      
+      
+     
   
   
        document.getElementById('first-modal').innerText = article.description
-       document.getElementById('second-modal').innerText = article.image_link
+       document.getElementById('second-modal').innerText = article.image_link[0]
        document.getElementById('first-div').innerText = article.pricing[0].price
        document.getElementById('second-div').innerText = article.pricing[1].price
        document.getElementById('third-div').innerText = article.pricing[2].price
@@ -115,6 +121,12 @@ const displayData = article =>{
        document.getElementById('basic').innerText = article.pricing[0].plan
        document.getElementById('pro').innerText = article.pricing[1].plan
        document.getElementById('enterprise').innerText = article.pricing[2].plan
+
+       
+
+       document.getElementById('first-li').innerText = article.features[1].feature_name
+       document.getElementById('second-li').innerText = article.features[2].feature_name
+       document.getElementById('third-li').innerText = article.features[3].feature_name
        
         
       
