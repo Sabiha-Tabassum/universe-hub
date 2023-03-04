@@ -36,7 +36,7 @@ const showData = Elements =>{
           <p>3.${element.features[2]}</p>
           <h3 class="card-title">${element.name}</h3>
           <div class="d-flex justify-content-between">
-              <div ><p id="date" class="">${element.published_in}</p></div>
+              <div ><p id="date" class=""><i class="fa-regular fa-calendar-check me-2"></i>${element.published_in}</p></div>
 
               <button onclick="loadId('${element.id}')" type="button" class="bg-danger-secondary border border-0 rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <i class="fa-solid fa-arrow-right"></i>
@@ -86,10 +86,15 @@ const seeMore = () =>{
 
 
 // date button :
+  // const dateButton = async () =>{
+  //   const url = `https://openapi.programming-hero.com/api/ai/tools`
+  //  const res = await fetch(url);
+  //  const data = await res.json();
+  //     console.log(data.data.tools);
 
-// document.getElementById('dateButton').addEventListener('click', function(){
-//   const date = document.getElementById('date');
-//   date.classList.remove('d-none');
+  // }
+ 
+   
   
   
 // })
@@ -136,7 +141,7 @@ const displayData = article =>{
        document.getElementById('third-li').innerText = article.features[3].feature_name
 
        document.getElementById('first-int').innerText = article.integrations ? article.integrations[0] : 'No data found'
-       document.getElementById('second-int').innerText = article.integrations ? article.integrations[1] : 'No data found'
+       document.getElementById('second-int').innerText = article.integrations ? article.integrations[1]  : 'No data found'
        document.getElementById('third-int').innerText = article.integrations ? article.integrations[2] : 'No data found'
        
 
