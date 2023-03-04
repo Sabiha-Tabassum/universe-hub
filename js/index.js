@@ -144,14 +144,14 @@ const displayData = article =>{
        document.getElementById('second-int').innerText = article.integrations ? article.integrations[1]  : 'No data found'
        document.getElementById('third-int').innerText = article.integrations ? article.integrations[2] : 'No data found'
        
-
-       document.getElementById('accuracy').innerText = article.accuracy.score
+       const accuracyData = document.getElementById('accuracy')
+       accuracyData.innerText = article.accuracy.score ? article.accuracy.score*100 + '%' + ' ' + 'accuracy' : ''
        document.getElementById('input').innerText = article.input_output_examples ? article.input_output_examples[0].input : 'No! Not Yet! Take a break!!!'
 
        document.getElementById('output').innerText = article.input_output_examples ?  article.input_output_examples[0].output : 'No! Not Yet! Take a break!!!'
         
       
-}
+};
 
 
 
