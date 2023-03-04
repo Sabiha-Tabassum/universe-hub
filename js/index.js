@@ -113,7 +113,8 @@ const displayData = article =>{
   
   
        document.getElementById('first-modal').innerText = article.description
-       document.getElementById('second-modal').innerText = article.image_link[0]
+       document.getElementById('second-modal').innerHTML = `<img class="img-fluid" src="${article.image_link[0]}">`
+       
        document.getElementById('first-div').innerText = article.pricing[0].price
        document.getElementById('second-div').innerText = article.pricing[1].price
        document.getElementById('third-div').innerText = article.pricing[2].price
@@ -127,7 +128,16 @@ const displayData = article =>{
        document.getElementById('first-li').innerText = article.features[1].feature_name
        document.getElementById('second-li').innerText = article.features[2].feature_name
        document.getElementById('third-li').innerText = article.features[3].feature_name
+
+       document.getElementById('first-int').innerText =article.integrations[0]
+       document.getElementById('second-int').innerText =article.integrations[1]
+       document.getElementById('third-int').innerText =article.integrations[2]
        
+
+       document.getElementById('accuracy').innerText = article.accuracy.score
+       document.getElementById('input').innerText = article.input_output_examples[0].input
+
+       document.getElementById('output').innerText = article.input_output_examples[0].output
         
       
 }
